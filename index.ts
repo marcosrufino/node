@@ -39,12 +39,12 @@ export class Umami {
 
   send(payload: UmamiPayload, type: 'event' | 'identify' = 'event') {
     const { hostUrl, userAgent } = this.options;
-
+    const nodeVersion = 'v20.15.0'
     return fetch(`${hostUrl}/api/send`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'User-Agent': userAgent || `Mozilla/5.0 Umami/${process.version}`,
+        'User-Agent': userAgent || `Mozilla/5.0 Umami/${nodeVersion}`,
       },
       body: JSON.stringify({ type, payload }),
     });
